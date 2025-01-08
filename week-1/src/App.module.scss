@@ -1,0 +1,97 @@
+.container {
+  border: 1px solid lightgray;
+  width: 448px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  gap: 12px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  color: black;
+}
+
+.sub_title {
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+}
+
+.price_input_box {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.error_message {
+  font-size: 12px;
+  color: red;
+  align-self: flex-start;
+}
+
+.purchased_lotto_number_box {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 8px;
+}
+
+.purchased_lotto_number_box_title {
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+}
+
+.purchased_lotto_number {
+  border: 1px solid lightgray;
+  height: 40px;
+  border-radius: 8px;
+}
+
+.lotto_list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lotto_item {
+  background-color: #f3f4f6;
+  border-radius: 8px;
+  height: 40px;
+  padding: 8px;
+}
+
+.winning_number_box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.winning_numbers {
+  background-color: #fef9c3;
+  border-radius: 8px;
+  height: 40px;
+  padding: 8px;
+
+  .bonus_number {
+    font-weight: bold;
+  }
+}
+
+.results_box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.results_list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

@@ -6,6 +6,7 @@ import LottoPurchaseBox from '@/features/lotto/components/LottoPurchaseBox'
 import LottoPurchasedList from '@/features/lotto/components/LottoPurchasedList'
 import Button from '@/shared/components/button/Button'
 import LottoWinningResultList from '@/features/lotto/components/LottoWinningResultLIst'
+import LottoRankCountResultList from '@/features/lotto/components/LottoRankCountResultList'
 
 function LottoPage() {
   const {
@@ -16,8 +17,10 @@ function LottoPage() {
     purchasedLottoTickets,
     winningLottoTicket,
     bonusLottoNumber,
-    lottoRankCounts,
+    lottoRankCountResult,
     handleCheckResultWinningLotto,
+    hasLottoWinningResult,
+    hasLottoRankCountResult,
   } = useLotto()
 
   return (
@@ -31,10 +34,15 @@ function LottoPage() {
       />
       <LottoPurchasedList purchasedLottoTickets={purchasedLottoTickets} />
       <Button onClick={handleCheckResultWinningLotto}>결과 확인</Button>
-      <LottoWinningResultList
-        winningLottoTicket={winningLottoTicket}
-        bonusLottoNumber={bonusLottoNumber}
-      />
+      {hasLottoWinningResult && (
+        <LottoWinningResultList
+          winningLottoTicket={winningLottoTicket}
+          bonusLottoNumber={bonusLottoNumber}
+        />
+      )}
+      {hasLottoRankCountResult && (
+        <LottoRankCountResultList lottoRankCountResult={lottoRankCountResult} />
+      )}
       {/* <LottoResetButton /> */}
     </div>
   )

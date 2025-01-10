@@ -11,7 +11,10 @@ import {
   LOTTO_WINNING_NUMBER_TICKET_COUNT,
 } from '@/features/lotto/constants/lotto'
 
-import { type LottoPurchaseAmountValidationResult } from '@/features/lotto/types/lotto'
+import {
+  type LottoRankValue,
+  type LottoPurchaseAmountValidationResult,
+} from '@/features/lotto/types/lotto'
 
 import { generateRandomUniqueNumberSet } from '@/shared/utils/generateRandomSet'
 
@@ -72,7 +75,7 @@ export const calculateLottoTicketRank = (
   ticket: number[],
   winningNumbers: number[],
   bonusNumber: number,
-): string => {
+): LottoRankValue => {
   const matchedCount = ticket.filter(number =>
     winningNumbers.includes(number),
   ).length

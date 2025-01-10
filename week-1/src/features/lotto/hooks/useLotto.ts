@@ -13,6 +13,8 @@ import {
   validateLottoAmount,
 } from '@/features/lotto/utils/lotto'
 
+import { type LottoRankCountResult } from '@/features/lotto/types/lotto'
+
 const useLotto = () => {
   const [lottoPurchaseAmount, setLottoPurchaseAmount] = useState('')
   const [lottoErrorMessage, setLottoErrorMessage] = useState<
@@ -23,16 +25,15 @@ const useLotto = () => {
   >([])
   const [winningLottoTicket, setWinningLottoTicket] = useState<number[]>([])
   const [bonusLottoNumber, setBonusLottoNumber] = useState<number>(0)
-  const [lottoRankCounts, setLottoRankCounts] = useState<
-    Record<string, number>
-  >({
-    [LOTTO_RANKS.FIRST]: 0,
-    [LOTTO_RANKS.SECOND]: 0,
-    [LOTTO_RANKS.THIRD]: 0,
-    [LOTTO_RANKS.FOURTH]: 0,
-    [LOTTO_RANKS.FIFTH]: 0,
-    [LOTTO_RANKS.NONE]: 0,
-  })
+  const [lottoRankCountResult, setLottoRankCountResult] =
+    useState<LottoRankCountResult>({
+      [LOTTO_RANKS.FIRST]: 0,
+      [LOTTO_RANKS.SECOND]: 0,
+      [LOTTO_RANKS.THIRD]: 0,
+      [LOTTO_RANKS.FOURTH]: 0,
+      [LOTTO_RANKS.FIFTH]: 0,
+      [LOTTO_RANKS.NONE]: 0,
+    })
 
   const handlePurchaseLotto = () => {
     const lottoPurchaseAmountAsNumber = parseInt(lottoPurchaseAmount, 10)
@@ -67,7 +68,7 @@ const useLotto = () => {
     setWinningLottoTicket(winningLottoNumbers)
     setBonusLottoNumber(bonusLottoNumber)
 
-    const newLottoRankCount = { ...lottoRankCounts }
+    const newLottoRankCount = { ...lottoRankCountResult }
     purchasedLottoTickets.forEach(ticket => {
       const rank = calculateLottoTicketRank(
         ticket,
@@ -77,8 +78,15 @@ const useLotto = () => {
       newLottoRankCount[rank]++
     })
 
-    setLottoRankCounts(newLottoRankCount)
+    setLottoRankCountResult(newLottoRankCount)
   }
+
+  const hasLottoWinningResult =
+    winningLottoTicket.length > 0 && bonusLottoNumber > 0
+
+  const hasLottoRankCountResult = Object.values(lottoRankCountResult).some(
+    count => count > 0,
+  )
 
   return {
     lottoPurchaseAmount,
@@ -88,8 +96,10 @@ const useLotto = () => {
     purchasedLottoTickets,
     winningLottoTicket,
     bonusLottoNumber,
-    lottoRankCounts,
+    lottoRankCountResult,
     handleCheckResultWinningLotto,
+    hasLottoWinningResult,
+    hasLottoRankCountResult,
   }
 }
 

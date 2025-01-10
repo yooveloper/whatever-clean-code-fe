@@ -3,7 +3,7 @@ import styles from './LottoPurchaseBox.module.scss'
 import Input from '@/shared/components/input/Input'
 import Button from '@/shared/components/button/Button'
 
-type Props = {
+type LottoPurchaseBoxProps = {
   amount: string
   onAmountChange: (e: React.ChangeEvent<HTMLInputElement>) => void
   errorMessage?: string
@@ -15,7 +15,7 @@ function LottoPurchaseBox({
   onAmountChange,
   errorMessage,
   onPurchase,
-}: Props) {
+}: LottoPurchaseBoxProps) {
   return (
     <div className={styles.container}>
       <div className={styles.input_box}>

@@ -3,25 +3,33 @@ import styles from './LottoPage.module.scss'
 import useLotto from '@/features/lotto/hooks/useLotto'
 
 import LottoPurchaseBox from '@/features/lotto/components/LottoPurchaseBox'
+import LottoPurchasedList from '@/features/lotto/components/LottoPurchasedList'
+import Button from '@/shared/components/button/Button'
 
 function LottoPage() {
   const {
-    lottoAmount,
-    setLottoAmount,
+    lottoPurchaseAmount,
+    setLottoPurchaseAmount,
     lottoErrorMessage,
     handlePurchaseLotto,
+    purchasedLottoTickets,
+    winningLottoTicket,
+    bonusLottoNumber,
+    lottoRankCounts,
+    handleCheckResultWinningLotto,
   } = useLotto()
 
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>로또 애플리케이션</h1>
       <LottoPurchaseBox
-        amount={lottoAmount}
-        onAmountChange={e => setLottoAmount(e.target.value)}
+        amount={lottoPurchaseAmount}
+        onAmountChange={e => setLottoPurchaseAmount(e.target.value)}
         onPurchase={handlePurchaseLotto}
         errorMessage={lottoErrorMessage}
       />
-      {/* <LottoPurchasedDisplay /> */}
+      <LottoPurchasedList purchasedLottoTickets={purchasedLottoTickets} />
+      <Button onClick={handleCheckResultWinningLotto}>결과 확인</Button>
       {/* <LottoResetButton /> */}
     </div>
   )

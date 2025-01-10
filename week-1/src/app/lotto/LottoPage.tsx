@@ -5,6 +5,7 @@ import useLotto from '@/features/lotto/hooks/useLotto'
 import LottoPurchaseBox from '@/features/lotto/components/LottoPurchaseBox'
 import LottoPurchasedList from '@/features/lotto/components/LottoPurchasedList'
 import Button from '@/shared/components/button/Button'
+import LottoWinningResultList from '@/features/lotto/components/LottoWinningResultLIst'
 
 function LottoPage() {
   const {
@@ -30,6 +31,10 @@ function LottoPage() {
       />
       <LottoPurchasedList purchasedLottoTickets={purchasedLottoTickets} />
       <Button onClick={handleCheckResultWinningLotto}>결과 확인</Button>
+      <LottoWinningResultList
+        winningLottoTicket={winningLottoTicket}
+        bonusLottoNumber={bonusLottoNumber}
+      />
       {/* <LottoResetButton /> */}
     </div>
   )

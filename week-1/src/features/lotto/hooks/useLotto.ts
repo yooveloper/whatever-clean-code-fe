@@ -22,7 +22,7 @@ const useLotto = () => {
     number[][]
   >([])
   const [winningLottoTicket, setWinningLottoTicket] = useState<number[]>([])
-  const [bonusLottoNumber, setBonusLottoNumber] = useState<number | null>(null)
+  const [bonusLottoNumber, setBonusLottoNumber] = useState<number>(0)
   const [lottoRankCounts, setLottoRankCounts] = useState<
     Record<string, number>
   >({

@@ -15,6 +15,15 @@ import {
 
 import { type LottoRankCountResult } from '@/features/lotto/types/lotto'
 
+const initialLottoRankCountResult: LottoRankCountResult = {
+  [LOTTO_RANKS.FIRST]: 0,
+  [LOTTO_RANKS.SECOND]: 0,
+  [LOTTO_RANKS.THIRD]: 0,
+  [LOTTO_RANKS.FOURTH]: 0,
+  [LOTTO_RANKS.FIFTH]: 0,
+  [LOTTO_RANKS.NONE]: 0,
+}
+
 const useLotto = () => {
   const [lottoPurchaseAmount, setLottoPurchaseAmount] = useState('')
   const [lottoErrorMessage, setLottoErrorMessage] = useState<
@@ -26,14 +35,7 @@ const useLotto = () => {
   const [winningLottoTicket, setWinningLottoTicket] = useState<number[]>([])
   const [bonusLottoNumber, setBonusLottoNumber] = useState<number>(0)
   const [lottoRankCountResult, setLottoRankCountResult] =
-    useState<LottoRankCountResult>({
-      [LOTTO_RANKS.FIRST]: 0,
-      [LOTTO_RANKS.SECOND]: 0,
-      [LOTTO_RANKS.THIRD]: 0,
-      [LOTTO_RANKS.FOURTH]: 0,
-      [LOTTO_RANKS.FIFTH]: 0,
-      [LOTTO_RANKS.NONE]: 0,
-    })
+    useState<LottoRankCountResult>(initialLottoRankCountResult)
 
   const handlePurchaseLotto = () => {
     const lottoPurchaseAmountAsNumber = parseInt(lottoPurchaseAmount, 10)
@@ -88,6 +90,15 @@ const useLotto = () => {
     count => count > 0,
   )
 
+  const handleResetLotto = () => {
+    setLottoPurchaseAmount('')
+    setLottoErrorMessage('')
+    setPurchasedLottoTickets([])
+    setWinningLottoTicket([])
+    setBonusLottoNumber(0)
+    setLottoRankCountResult(initialLottoRankCountResult)
+  }
+
   return {
     lottoPurchaseAmount,
     setLottoPurchaseAmount,
@@ -100,6 +111,7 @@ const useLotto = () => {
     handleCheckResultWinningLotto,
     hasLottoWinningResult,
     hasLottoRankCountResult,
+    handleResetLotto,
   }
 }
 

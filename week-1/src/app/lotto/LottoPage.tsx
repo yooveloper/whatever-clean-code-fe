@@ -21,6 +21,7 @@ function LottoPage() {
     handleCheckResultWinningLotto,
     hasLottoWinningResult,
     hasLottoRankCountResult,
+    handleResetLotto,
   } = useLotto()
 
   return (
@@ -43,7 +44,7 @@ function LottoPage() {
       {hasLottoRankCountResult && (
         <LottoRankCountResultList lottoRankCountResult={lottoRankCountResult} />
       )}
-      {/* <LottoResetButton /> */}
+      <Button onClick={handleResetLotto}>처음부터 다시하기</Button>
     </div>
   )
 }

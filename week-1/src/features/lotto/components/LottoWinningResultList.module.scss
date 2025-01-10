@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.sub_title {
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+}
+
+.winning_lotto_number {
+  background-color: #fef9c3;
+  border-radius: 8px;
+  height: 40px;
+  padding: 8px;
+
+  .bonus_lotto_number {
+    font-weight: bold;
+  }
+}

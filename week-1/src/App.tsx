@@ -1,10 +1,7 @@
-import { useState } from 'react'
-import './App.css'
+import LottoPage from '@/app/lotto/LottoPage'
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return <div>{count}</div>
+  return <LottoPage />
 }
 
 export default App

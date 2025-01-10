@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.sub_title {
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+}
+
+.lotto_item {
+  margin-top: 8px;
+}
